@@ -1,4 +1,7 @@
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import * as THREE from "three";
 
 export enum AvatarType {
     DEFAULT = "/3d-model/bear.gltf",
@@ -24,12 +27,20 @@ export const Avatar = ({
     rotation = [0, 0, 0],
 }: AvatarProps) => {
     const { scene } = useGLTF(type);
-    return <primitive
-        object={scene}
-        castShadow={castShadow}
-        receiveShadow={receiveShadow}
-        scale={scale}
-        position={position}
-        rotation={rotation} // Rotate the avatar to face the Z axis
-    />;
-}
+    const avatarRef = useRef<THREE.Object3D>(null);
+    const raycaster = new THREE.Raycaster();
+    const downVector = new THREE.Vector3(0, -1, 0);
+
+
+    return (
+        <primitive
+            ref={avatarRef}
+            object={scene}
+            castShadow={castShadow}
+            receiveShadow={receiveShadow}
+            scale={scale}
+            position={position}
+            rotation={rotation}
+        />
+    );
+};

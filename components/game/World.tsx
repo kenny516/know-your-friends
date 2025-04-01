@@ -1,13 +1,11 @@
 'use client'
 
-import { RigidBody } from "@react-three/rapier"
 import { useTexture } from "@react-three/drei"
 import { DoubleSide, RepeatWrapping } from "three"
 import { House3D, HouseType } from "./element/house-3d"
 import { Terrain3D, TerrainType } from "./element/terrain-3d"
 import { Table } from "./element/table"
 
-// ====================== TYPES ======================
 export type Position = [number, number, number]
 
 interface TreeProps {
@@ -50,12 +48,12 @@ const TERRAIN_POSITIONS: Position[] = [
 
 // ====================== MAIN COMPONENT ======================
 export default function World() {
+
     return (
         <group>
-            <RigidBody type="fixed" colliders="cuboid">
+            <group >
                 <Terrain />
-            </RigidBody>
-
+            </group>
             <Houses />
             <SportsTerrains />
             <Table />
@@ -74,7 +72,10 @@ function Terrain() {
     groundTexture.wrapT = RepeatWrapping
 
     return (
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]}>
+        <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[0, -0.01, 0]}
+        >
             <planeGeometry args={[100, 100, 32, 32]} />
             <meshStandardMaterial
                 map={groundTexture}
