@@ -12,7 +12,6 @@ const keyboardMap = [
     { name: 'run', keys: ['Shift'] },
 ]
 
-
 export default function PlayerController() {
     return (
         <KeyboardControls map={keyboardMap}>
