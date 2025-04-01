@@ -1,15 +1,10 @@
 // plusieur avatar avec user_id
 import React from 'react'
 import { Avatar, AvatarType } from './element/avatar-3d'
-import { useGame } from './GameContext'
-import { Text, Html } from '@react-three/drei'
+import { Html } from '@react-three/drei'
 import { Position } from './World'
 
 export default function OtherPlayer() {
-    const { players, currentPlayerId, invitePlayer, invitedPlayers } = useGame()
-
-    // Filtrer pour ne montrer que les autres joueurs (pas le joueur actuel)
-    const otherPlayers = players.filter(player => player.id !== currentPlayerId)
 
     // Données par défaut avec des positions différentes pour chaque joueur
     const defaultPlayers = [
@@ -29,18 +24,10 @@ export default function OtherPlayer() {
         }
     ]
 
-    const handleInvite = (playerId: string, e: React.MouseEvent) => {
-        e.stopPropagation()
-        invitePlayer(playerId)
-    }
-
-    // Utiliser otherPlayers s'il y en a, sinon utiliser defaultPlayers
-    const playersToRender = otherPlayers.length > 0 ? otherPlayers : defaultPlayers
 
     return (
         <>
             {defaultPlayers.map((player) => {
-                const isInvited = invitedPlayers.includes(player.id)
                 const playerPosition: Position = [
                     player.position.x || 0,
                     player.position.y || 0,
