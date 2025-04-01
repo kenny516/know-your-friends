@@ -13,7 +13,7 @@ const keyboardMap = [
 ]
 
 
-export default function Player() {
+export default function PlayerController() {
     return (
         <KeyboardControls map={keyboardMap}>
             <Controller maxVelLimit={5} >

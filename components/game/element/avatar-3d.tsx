@@ -1,5 +1,4 @@
 import { useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
@@ -28,8 +27,6 @@ export const Avatar = ({
 }: AvatarProps) => {
     const { scene } = useGLTF(type);
     const avatarRef = useRef<THREE.Object3D>(null);
-    const raycaster = new THREE.Raycaster();
-    const downVector = new THREE.Vector3(0, -1, 0);
 
 
     return (

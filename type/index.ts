@@ -1,4 +1,4 @@
-export interface GamePlayerInitialInfo {
+export type GamePlayerInitialInfo = {
     id: number;
     game_player_id: number;
     initial_info: string;
@@ -6,7 +6,7 @@ export interface GamePlayerInitialInfo {
     updated_at: string;
 }
 
-export interface GameQuestion {
+export type GameQuestion = {
     id: number;
     game_id: number;
     question: string;
@@ -16,7 +16,7 @@ export interface GameQuestion {
     updated_at: string;
 }
 
-export interface GameQuestionAnswer {
+export type GameQuestionAnswer = {
     id: number;
     game_question_id: number;
     game_player_id: number;
@@ -25,14 +25,14 @@ export interface GameQuestionAnswer {
     updated_at: string;
 }
 
-export interface Game {
+export type Game = {
     id: number;
     creator_player_id: number;
     created_at: string;
     updated_at: string;
 }
 
-export interface GamePlayer {
+export type GamePlayer = {
     id: number;
     game_id: number;
     player_id: number;
@@ -40,7 +40,7 @@ export interface GamePlayer {
     updated_at: string;
 }
 
-export interface GamePlayerRequest {
+export type GamePlayerRequest = {
     id: number;
     sender_player_id: number;
     receiver_player_id: number;
@@ -50,7 +50,7 @@ export interface GamePlayerRequest {
     updated_at: string;
 }
 
-export interface Player {
+export type Player = {
     id: number;
     user_id: number;
     x: number;
@@ -60,7 +60,7 @@ export interface Player {
     updated_at: string;
 }
 
-export interface FriendRequest {
+export type FriendRequest = {
     id: number;
     sender_user_id: number;
     receiver_user_id: number;
@@ -70,7 +70,7 @@ export interface FriendRequest {
     updated_at: string;
 }
 
-export interface FriendConnection {
+export type FriendConnection = {
     id: number;
     sender_user_id: number;
     receiver_user_id: number;
