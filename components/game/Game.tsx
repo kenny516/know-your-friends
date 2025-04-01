@@ -37,8 +37,9 @@ export default function Game() {
 
                 <Suspense fallback={null}>
                     <Physics timeStep="vary">
-
                         <Player />
+
+
                         {/* Autres joueurs avec leur propre contexte physique */}
                         <RigidBody type="fixed" colliders="cuboid">
                             <OtherPlayer />

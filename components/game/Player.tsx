@@ -17,7 +17,7 @@ export default function Player() {
     return (
         <KeyboardControls map={keyboardMap}>
             <Controller maxVelLimit={5} >
-                <Avatar type={AvatarType.DEFAULT} position={[0, -0.9, 0]} />
+                <Avatar type={AvatarType.DEFAULT} scale={0.315} position={[0, -0.9, 0]} />
             </Controller>
         </KeyboardControls>
     )
