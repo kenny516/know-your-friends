@@ -3,6 +3,7 @@ import React from 'react'
 import { Avatar, AvatarType } from './element/avatar-3d'
 import { useGame } from './GameContext'
 import { Text, Html } from '@react-three/drei'
+import { Position } from './World'
 
 export default function OtherPlayer() {
     const { players, currentPlayerId, invitePlayer, invitedPlayers } = useGame()
@@ -14,12 +15,12 @@ export default function OtherPlayer() {
     const defaultPlayers = [
         {
             id: 'default1',
-            name: 'Bot 1',
+            name: 'jean',
             position: { x: 2, y: 0, z: 2 },  // Position modifiée
             type: AvatarType.DOG
         },
         {
-            id: 'default2',
+            id: 'charle',
             name: 'Bot 2',
             position: { x: -2, y: 0, z: -2 }, // Position modifiée
             type: AvatarType.DUCK
@@ -36,9 +37,9 @@ export default function OtherPlayer() {
 
     return (
         <>
-            {playersToRender.map((player) => {
+            {defaultPlayers.map((player) => {
                 const isInvited = invitedPlayers.includes(player.id)
-                const playerPosition = [
+                const playerPosition: Position = [
                     player.position.x || 0,
                     player.position.y || 0,
                     player.position.z || 0

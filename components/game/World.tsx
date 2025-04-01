@@ -7,7 +7,7 @@ import { House3D, HouseType } from "./element/house-3d"
 import { Terrain3D, TerrainType } from "./element/terrain-3d"
 
 // ====================== TYPES ======================
-type Position = [number, number, number]
+export type Position = [number, number, number]
 
 interface TreeProps {
     position: Position;
