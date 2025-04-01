@@ -69,14 +69,14 @@ export function GameProvider({ children }: GameProviderProps) {
     }
 
     return (
-        <GameContext.Provider value={{ 
-            players, 
-            invitedPlayers, 
-            addPlayer, 
-            removePlayer, 
-            updatePlayerPosition, 
-            invitePlayer, 
-            removeInvitation, 
+        <GameContext.Provider value={{
+            players,
+            invitedPlayers,
+            addPlayer,
+            removePlayer,
+            updatePlayerPosition,
+            invitePlayer,
+            removeInvitation,
             startGame,
             currentPlayerId
         }}>

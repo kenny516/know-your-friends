@@ -16,14 +16,16 @@ export default function OtherPlayer() {
         {
             id: 'default1',
             name: 'jean',
-            position: { x: 2, y: 0, z: 2 },  // Position modifiée
-            type: AvatarType.DOG
+            position: { x: 1, y: 0, z: 0 },  // Position modifiée
+            type: AvatarType.DOG,
+            rotation: [0, Math.PI * 1.5, 0] as [number, number, number]
         },
         {
             id: 'charle',
-            name: 'Bot 2',
-            position: { x: -2, y: 0, z: -2 }, // Position modifiée
-            type: AvatarType.DUCK
+            name: 'charle',
+            position: { x: -1, y: 0, z: 0 }, // Position modifiée
+            type: AvatarType.DUCK,
+            rotation: [0, Math.PI / 2, 0] as [number, number, number]
         }
     ]
 
@@ -50,6 +52,7 @@ export default function OtherPlayer() {
                         {/* Avatar 3D visible */}
                         <Avatar
                             type={player.type || AvatarType.DEFAULT}
+                            rotation={player.rotation || [0, 0, 0]}
                         />
 
                         <Html position={[0, 1.5, 0]} center>
@@ -72,25 +75,7 @@ export default function OtherPlayer() {
                                     {player.name || player.id}
                                 </div>
 
-                                {/* Bouton d'invitation */}
-                                <button
-                                    onClick={(e) => handleInvite(player.id, e)}
-                                    disabled={isInvited}
-                                    style={{
-                                        backgroundColor: isInvited ? '#4CAF50' : '#2196F3',
-                                        color: 'white',
-                                        border: 'none',
-                                        padding: '4px 8px',
-                                        borderRadius: '4px',
-                                        cursor: isInvited ? 'default' : 'pointer',
-                                        fontSize: '12px',
-                                        fontWeight: 'bold',
-                                        opacity: isInvited ? 0.7 : 1,
-                                        pointerEvents: 'auto'
-                                    }}
-                                >
-                                    {isInvited ? 'Invité' : 'Inviter'}
-                                </button>
+
                             </div>
                         </Html>
                     </group>

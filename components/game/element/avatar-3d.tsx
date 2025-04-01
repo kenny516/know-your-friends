@@ -12,6 +12,7 @@ interface AvatarProps {
     receiveShadow?: boolean;
     scale?: number;
     position?: [number, number, number];
+    rotation?: [number, number, number];
 }
 
 export const Avatar = ({
@@ -19,7 +20,8 @@ export const Avatar = ({
     castShadow = false,
     receiveShadow = false,
     scale = 0.315,
-    position = [0, 0, 0]
+    position = [0, 0, 0],
+    rotation = [0, 0, 0],
 }: AvatarProps) => {
     const { scene } = useGLTF(type);
     return <primitive
@@ -28,5 +30,6 @@ export const Avatar = ({
         receiveShadow={receiveShadow}
         scale={scale}
         position={position}
+        rotation={rotation} // Rotate the avatar to face the Z axis
     />;
 }

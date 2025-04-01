@@ -5,6 +5,7 @@ import { useTexture } from "@react-three/drei"
 import { DoubleSide, RepeatWrapping } from "three"
 import { House3D, HouseType } from "./element/house-3d"
 import { Terrain3D, TerrainType } from "./element/terrain-3d"
+import { Table } from "./element/table"
 
 // ====================== TYPES ======================
 export type Position = [number, number, number]
@@ -44,7 +45,7 @@ const HOUSE_POSITIONS: Position[] = [
 ]
 
 const TERRAIN_POSITIONS: Position[] = [
-    [28, 0, 0], [-28, 0, 0], [0, 0, 28], [0, 0, -28]
+    [8, 0, 0], [-18, 0, 0], [0, 0, 28], [0, 0, -28]
 ]
 
 // ====================== MAIN COMPONENT ======================
@@ -57,7 +58,7 @@ export default function World() {
 
             <Houses />
             <SportsTerrains />
-
+            <Table />
             <Trees />
             <Benches />
             <LampPosts />
