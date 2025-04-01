@@ -7,12 +7,24 @@ import { Physics, RigidBody } from "@react-three/rapier"
 import { Bloom, EffectComposer } from "@react-three/postprocessing"
 
 import LoadingScreen from "./LoadingScreen"
-import Player from "./Player"
+import PlayerController from "./Player-controller"
 import OtherPlayer from "./OtherPlayer"
 import { Map } from "./element/map"
+import { Player } from "@/type"
+import { Avatar, AvatarType } from "./element/avatar-3d"
 
 export default function Game() {
-    const [isLoaded, setIsLoaded] = useState<boolean>(false)
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [players, setPlayers] = useState<Player[]>([]);
+    const currentPlayer: Player = {
+        id: 0,
+        user_id: 0,
+        x: 0,
+        y: 0,
+        z: 0,
+        created_at: "",
+        updated_at: ""
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -32,7 +44,7 @@ export default function Game() {
 
             <Suspense fallback={null}>
                 <Physics timeStep="vary">
-                    <Player />
+                    <PlayerController />
 
                     {/* Autres joueurs avec leur propre contexte physique */}
                     <RigidBody type="fixed" colliders="cuboid">
@@ -41,12 +53,12 @@ export default function Game() {
 
                     {/* Objets du monde avec trimesh */}
                     <RigidBody type="fixed" colliders="trimesh">
-                        <Map position={[0, 0.1, 0]} scale={0.01} />
+                        <Map position={[0, 0.1, 0]} scale={0.6} />
                     </RigidBody>
                 </Physics>
 
                 <Sky sunPosition={[100, 20, 100]} />
-                <Environment preset="sunset" />
+                <Environment preset="city" />
                 <Stars radius={100} depth={50} count={5000} factor={4} />
 
                 <ambientLight intensity={0.3} />
@@ -73,7 +85,7 @@ export default function Game() {
             />
 
             <EffectComposer>
-                <Bloom luminanceThreshold={1} intensity={0.5} levels={9} mipmapBlur />
+                <Bloom luminanceThreshold={1} intensity={0.1} levels={9} mipmapBlur />
             </EffectComposer>
 
         </Canvas>
