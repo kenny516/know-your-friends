@@ -13,6 +13,7 @@ import { GameProvider } from "./GameContext"
 import Player from "./Player"
 import OtherPlayer from "./OtherPlayer"
 import PlayerPopup from "./PlayerPopup"
+import QuestionPopup from "./QuestionPopup"
 
 export default function Game() {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -30,7 +31,11 @@ export default function Game() {
     }
     return (
         <GameProvider>
-            <PlayerPopup />
+            <QuestionPopup
+                onClose={() => false}
+                targetMusicStyle="Rock"
+            />
+
             <Canvas shadows camera={{ position: [0, 5, 10], fov: 30 }} onPointerDown={(e) => (e.target as HTMLCanvasElement).requestPointerLock()}>
                 <fog attach="fog" args={["#17171b", 30, 100]} />
                 <color attach="background" args={["#17171b"]} />
